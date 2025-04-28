@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 import axios from 'axios'
-import InputField from '@/components/common/InputField'
-import Button from '@/components/common/Button'
 import { getAuth, signInWithCustomToken } from 'firebase/auth'
 import firebaseApp from '@/lib/firebase/config'
 import { useRouter } from 'next/navigation'
+import InputField from '@/components/common/InputField'
+import Button from '@/components/common/Button'
 
 export default function LoginForm() {
   const [email, setEmail] = useState('')
@@ -15,9 +15,8 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('[Login] Submit triggered')
     setLoading(true)
     setError(null)
 
@@ -28,23 +27,22 @@ export default function LoginForm() {
       })
 
       const { customToken } = res.data
-      console.log('[Login] Token:', customToken)
 
       const auth = getAuth(firebaseApp)
       await signInWithCustomToken(auth, customToken)
 
       router.push('/')
     } catch (err: any) {
-      console.log('[Login] Error:', err)
-      setError(err.response?.data?.message || 'Gagal login')
+      console.error('[FRONTEND] Error saat login:', err)
+      setError(err.response?.data?.message || 'Gagal login, cek koneksi atau data login.')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <h2>Login</h2>
+    <form onSubmit={handleLogin} className="max-w-sm mx-auto space-y-4">
+      <h2 className="text-2xl font-semibold text-center">Login</h2>
 
       <InputField
         type="email"
@@ -53,6 +51,7 @@ export default function LoginForm() {
         placeholder="email@example.com"
         label="Email"
       />
+
       <InputField
         type="password"
         value={password}
@@ -61,9 +60,13 @@ export default function LoginForm() {
         label="Password"
       />
 
-      {error && <p>{error}</p>}
+      {error && <p className="text-red-500 text-sm text-center">{error}</p>}
 
-      <Button text="Login" loading={loading} type="submit" />
+      <Button
+        type="submit"
+        text={loading ? 'Logging in...' : 'Login'}
+        loading={loading}
+      />
     </form>
   )
 }

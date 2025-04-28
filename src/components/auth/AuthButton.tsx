@@ -2,13 +2,6 @@
 
 import Link from 'next/link'
 import { useAuth } from '@/hooks/useAuth'
-import { UserRole } from '@/constants/roles'
-
-const ROLE_LABEL: Record<UserRole, string> = {
-  [UserRole.Customer]: 'Customer',
-  [UserRole.Seller]: 'Seller',
-  [UserRole.Admin]: 'Admin',
-}
 
 export default function AuthButton() {
   const { user, isLoggedIn, loading, logout, role } = useAuth()
@@ -20,8 +13,8 @@ export default function AuthButton() {
   if (!isLoggedIn) {
     return (
       <div>
-        <Link href="/auth/login">Login</Link>{' '}
-        <Link href="/auth/register">Signup</Link>
+        <Link href="/login">Login</Link>{' '}
+        <Link href="/register">Signup</Link>
       </div>
     )
   }
@@ -30,8 +23,8 @@ export default function AuthButton() {
     <div>
       <span>
         Halo, {user?.email}
-        {role !== null && ROLE_LABEL[role] && (
-          <span> as {ROLE_LABEL[role]}</span>
+        {role && (
+          <span> as {role.charAt(0).toUpperCase() + role.slice(1)}</span>
         )}
       </span>
       <button onClick={logout}>Logout</button>

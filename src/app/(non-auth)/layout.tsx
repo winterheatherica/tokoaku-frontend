@@ -4,28 +4,22 @@ import { useAuth } from '@/hooks/useAuth'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-export default function PrivateLayout({ children }: { children: React.ReactNode }) {
+export default function VisitorLayout({ children }: { children: React.ReactNode }) {
   const { isLoggedIn, loading } = useAuth()
   const router = useRouter()
-  const [canRender, setCanRender] = useState(false)
+  const [ready, setReady] = useState(false)
 
   useEffect(() => {
     if (!loading) {
-      if (!isLoggedIn) {
-        router.replace('/auth/login')
+      if (isLoggedIn) {
+        router.replace('/')
       } else {
-        setCanRender(true)
+        setReady(true)
       }
     }
   }, [isLoggedIn, loading, router])
 
-  if (!canRender) {
-    return (
-      <div>
-        <span>Memuat halaman...</span>
-      </div>
-    )
-  }
+  if (!ready || loading) return <p>Memuat halaman Visitor...</p>
 
   return <>{children}</>
 }

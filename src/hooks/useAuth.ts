@@ -4,33 +4,33 @@ import { useEffect, useState } from 'react'
 import { getAuth, onAuthStateChanged, User, signOut } from 'firebase/auth'
 import firebaseApp from '@/lib/firebase/config'
 import { useRouter } from 'next/navigation'
-import { UserRole } from '@/constants/roles'
 
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null)
-  const [role, setRole] = useState<UserRole | null>(null)
+  const [role, setRole] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
   const auth = getAuth(firebaseApp)
-
-  const parseRole = (firebaseRole: any): UserRole | null =>
-    typeof firebaseRole === 'number' && firebaseRole in UserRole
-      ? firebaseRole as UserRole
-      : null
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         setUser(firebaseUser)
         try {
-          const tokenResult = await firebaseUser.getIdTokenResult(false)
-          setRole(parseRole(tokenResult.claims.role))
+          const tokenResult = await firebaseUser.getIdTokenResult(true)
+          const firebaseRole = tokenResult.claims.role
+
+          if (typeof firebaseRole === 'string') {
+            setRole(firebaseRole)
+          } else {
+            console.warn('[useAuth] Role tidak dikenali:', firebaseRole)
+            setRole(null)
+          }
         } catch (err) {
-          console.log('[useAuth] Gagal ambil token claims:', err)
+          console.error('[useAuth] Gagal ambil token claims:', err)
           setRole(null)
         }
       } else {
-        console.log('[useAuth] Tidak ada user login')
         setUser(null)
         setRole(null)
       }
@@ -45,7 +45,7 @@ export function useAuth() {
     await signOut(auth)
     setUser(null)
     setRole(null)
-    router.push('/auth/login')
+    router.push('/login')
   }
 
   return {
