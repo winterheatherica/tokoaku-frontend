@@ -1,10 +1,11 @@
+import './Button.css'
+
 type Props = {
   text: string
   loading?: boolean
   disabled?: boolean
   onClick?: () => void
   type?: 'button' | 'submit'
-  color?: 'blue' | 'green' | 'red'
 }
 
 export default function Button({

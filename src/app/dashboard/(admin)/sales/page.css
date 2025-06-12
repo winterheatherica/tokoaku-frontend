@@ -1,0 +1,108 @@
+.salesPageWrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5fffd;
+  color: #2E8B80;
+}
+
+.salesPageWrapper h2 {
+  margin: 32px 0 12px;
+  color: #20736a;
+  font-weight: 700;
+}
+
+.salesButton {
+  padding: 10px 20px;
+  background-color: #3AAFA9;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-bottom: 24px;
+  transition: background-color 0.3s ease;
+}
+
+.salesButton:hover {
+  background-color: #2E8B80;
+}
+
+.uploadGroup {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.fileUploadButton {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #3AAFA9;
+  color: #ffffff;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  height: 40px;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+  min-width: 160px;
+  transition: background-color 0.3s ease;
+}
+
+.fileUploadButton:hover {
+  background-color: #2E8B80;
+}
+
+.salesPageWrapper input[type="file"] {
+  display: none;
+}
+
+.salesPageWrapper select {
+  padding: 6px 10px;
+  border: 1px solid #8FCFBC;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #2E8B80;
+  margin-left: 8px;
+}
+
+#salesChart {
+  margin-top: 24px;
+  padding: 8px;
+  border: 1px solid #d1f0e9;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(46, 139, 128, 0.1);
+}
+
+.salesAnalysis {
+  margin-top: 32px;
+  padding: 16px 20px;
+  background-color: #EAFBF9;
+  border: 1px solid #8FCFBC;
+  border-radius: 8px;
+  box-shadow: inset 0 0 8px rgba(143, 207, 188, 0.2);
+  color: #2E8B80;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.salesAnalysis strong {
+  font-weight: 700;
+}
+
+.salesAnalysis ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.salesAnalysis li {
+  margin-bottom: 6px;
+}

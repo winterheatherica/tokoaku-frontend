@@ -1,0 +1,67 @@
+.verify-container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 32px;
+  background-color: #EAFBF9;
+  border: 2px solid #8FCFBC;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(58, 175, 169, 0.2);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #22372B;
+}
+
+.verify-container h1 {
+  color: #3AAFA9;
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+.verify-message {
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+  white-space: pre-wrap;
+}
+
+.verify-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.verify-erika {
+  max-width: 280px;
+  width: 100%;
+  margin-top: 12px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(58, 175, 169, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.verify-error button.verify-button {
+  background-color: #3AAFA9;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 16px;
+}
+
+.verify-error button.verify-button:hover {
+  background-color: #2E8B80;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

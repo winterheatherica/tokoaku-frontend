@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.auth-layout {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.auth-sidebar {
+  width: 20%;
+  flex-shrink: 0;
+}
+
+.auth-main {
+  flex: 1;
+  font-family: 'Montserrat', sans-serif;
+}

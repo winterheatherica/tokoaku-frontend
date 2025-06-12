@@ -7,6 +7,7 @@ import firebaseApp from '@/lib/firebase/config'
 import { useRouter } from 'next/navigation'
 import InputField from '@/components/common/InputField'
 import Button from '@/components/common/Button'
+import './LoginForm.css'
 
 export default function LoginForm() {
   const [email, setEmail] = useState('')

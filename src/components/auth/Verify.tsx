@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { getAuth, signInWithCustomToken } from 'firebase/auth'
 import firebaseApp from '@/lib/firebase/config'
+import './Verify.css'
 
 export default function Verify() {
   const router = useRouter()
@@ -32,16 +33,17 @@ export default function Verify() {
           token,
         })
 
-        const { customToken, role } = res.data
+        const { customToken } = res.data
         if (!customToken) throw new Error('Custom token tidak ditemukan')
 
         const auth = getAuth(firebaseApp)
         await signInWithCustomToken(auth, customToken)
 
-        await new Promise((resolve) => setTimeout(resolve, 1000))
-
         setMessage('Akun berhasil diverifikasi dan login!')
         setStatus('success')
+
+        // Tunggu 3 detik agar Erika terlihat dulu
+        await new Promise((resolve) => setTimeout(resolve, 3000))
 
         router.push('/')
       } catch (err: any) {
@@ -59,14 +61,26 @@ export default function Verify() {
   }, [email, token, router])
 
   return (
-    <div>
+    <div className="verify-container">
       <h1>Verifikasi Email</h1>
-      {status === 'loading' && <p>Mengecek token verifikasi...</p>}
-      {status === 'success' && <p>{message}</p>}
+
+      {status === 'loading' && <p className="verify-message">Mengecek token verifikasi...</p>}
+
+      {status === 'success' && (
+        <div className="verify-success">
+          <p className="verify-message">{message}</p>
+          <img
+            src="/erika_spotlight.png"
+            alt="Erika Spotlight"
+            className="verify-erika"
+          />
+        </div>
+      )}
+
       {status === 'error' && (
-        <div>
-          <p>{message}</p>
-          <button onClick={() => router.push('/register')}>
+        <div className="verify-error">
+          <p className="verify-message">{message}</p>
+          <button onClick={() => router.push('/register')} className="verify-button">
             Kembali ke Registrasi
           </button>
         </div>

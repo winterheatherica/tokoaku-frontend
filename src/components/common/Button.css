@@ -1,0 +1,26 @@
+.button {
+  width: 100%;
+  background-color: #3AAFA9;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 5px 14px rgba(58, 175, 169, 0.5);
+  box-sizing: border-box;
+}
+
+.button:hover {
+  background-color: #2E8B80;
+  box-shadow: 0 7px 18px rgba(46, 139, 128, 0.7);
+}
+
+.button:disabled {
+  background-color: #b2dfd8;
+  cursor: not-allowed;
+  box-shadow: none;
+}

@@ -5,9 +5,11 @@ import { getAuth, onAuthStateChanged, User, signOut } from 'firebase/auth'
 import firebaseApp from '@/lib/firebase/config'
 import { useRouter } from 'next/navigation'
 
+type Role = 'Admin' | 'Seller' | 'Customer'
+
 export function useAuth() {
   const [user, setUser] = useState<User | null>(null)
-  const [role, setRole] = useState<string | null>(null)
+  const [role, setRole] = useState<Role | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
   const auth = getAuth(firebaseApp)
@@ -20,7 +22,7 @@ export function useAuth() {
           const tokenResult = await firebaseUser.getIdTokenResult(true)
           const firebaseRole = tokenResult.claims.role
 
-          if (typeof firebaseRole === 'string') {
+          if (firebaseRole === 'Admin' || firebaseRole === 'Seller' || firebaseRole === 'Customer') {
             setRole(firebaseRole)
           } else {
             console.warn('[useAuth] Role tidak dikenali:', firebaseRole)

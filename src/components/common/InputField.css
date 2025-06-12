@@ -1,0 +1,28 @@
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #8FCFBC;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: inset 0 0 5px rgba(143, 207, 188, 0.3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #22372B;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #3AAFA9;
+  box-shadow: 0 0 8px rgba(58, 175, 169, 0.3);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #3AAFA9;
+  margin-bottom: 6px;
+  width: 100%;
+}

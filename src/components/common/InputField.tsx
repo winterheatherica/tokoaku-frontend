@@ -1,5 +1,7 @@
 'use client'
 
+import './InputField.css'
+
 type Props = {
   type: 'email' | 'password'
   value: string

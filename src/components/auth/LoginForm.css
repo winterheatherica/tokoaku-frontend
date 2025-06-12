@@ -1,0 +1,47 @@
+form {
+  background-color: #EAFBF9;
+  border: 2px solid #8FCFBC;
+  border-radius: 16px;
+  padding: 36px 32px;
+  max-width: 420px;
+  width: 100%;
+  margin: 60px auto;
+  box-shadow: 0 6px 14px rgba(58, 175, 169, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #22372B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+form h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3AAFA9;
+  text-align: center;
+  width: 100%;
+}
+
+form > div {
+  width: 100%;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+form p {
+  font-size: 0.95rem;
+  margin-top: 12px;
+  text-align: center;
+  width: 100%;
+}
+
+form p:nth-of-type(1) {
+  color: #2E8B80;
+}
+
+form p:nth-of-type(2) {
+  color: #EF5350;
+}

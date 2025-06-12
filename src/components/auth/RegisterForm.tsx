@@ -4,6 +4,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import InputField from '@/components/common/InputField'
 import Button from '@/components/common/Button'
+import './RegisterForm.css'
 
 export default function RegisterForm() {
   const [email, setEmail] = useState('')

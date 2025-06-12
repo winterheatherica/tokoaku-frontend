@@ -1,0 +1,21 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #EAFBF9;
+  z-index: 10000;
+  border-bottom: 1px solid #8FCFBC;
+  box-shadow: 0 2px 10px rgba(58, 175, 169, 0.1);
+}
+
+.main-visitor {
+  padding-top: 64px;
+  font-family: 'MontserratRegular', sans-serif;
+  padding-left: 10%;
+  padding-right: 10%;
+  background-color: #f5fffe;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

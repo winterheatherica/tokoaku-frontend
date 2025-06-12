@@ -1,0 +1,326 @@
+.product-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 24px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(58, 175, 169, 0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.product-main {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.product-main-left {
+  flex: 1 1 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 450px;
+}
+.product-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #3AAFA9;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.product-main-image {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #8FCFBC;
+  box-shadow: 0 4px 8px rgba(58, 175, 169, 0.15);
+  margin-bottom: 12px;
+}
+
+.product-variant-thumbnails {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.product-variant-thumbnails .thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #8FCFBC;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.product-variant-thumbnails .thumbnail.cover {
+  border: 2px solid #3AAFA9;
+  transform: scale(1.05);
+}
+
+.product-main-right {
+  flex: 2 1 400px;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: inset 0 0 10px rgba(58, 175, 169, 0.15);
+  min-height: 500px;
+  width: 400px;
+  background-color: #EAFBF9;
+  border: 2px solid #8FCFBC;
+}
+
+.variant-name {
+  font-size: 1.5rem;
+  color: #3AAFA9;
+  margin-bottom: 8px;
+}
+
+.variant-description {
+  margin-bottom: 12px;
+  color: #3AAFA9;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 8px;
+}
+
+.final-price {
+  font-weight: bold;
+  color: #d60000;
+}
+
+.discount-section {
+  margin-top: 12px;
+}
+
+.discount-section h4 {
+  color: #3AAFA9;
+  margin-bottom: 4px;
+}
+
+.discount-section ul {
+  list-style-position: inside;
+  padding-left: 16px;
+}
+
+.discount-section li {
+  margin-bottom: 4px;
+  color: #22372B;
+}
+
+.variant-selector {
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+.variant-selector h4 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #3AAFA9;
+  margin-bottom: 8px;
+}
+
+.variant-buttons-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.variant-button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #8FCFBC;
+  background-color: #EAFBF9;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+  color: #22372B;
+}
+
+.variant-button.active {
+  background-color: #3AAFA9;
+  color: white;
+}
+
+.variant-button:hover {
+  background-color: #C7EDEB;
+}
+
+.add-to-cart {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantity-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: #2E8B80;
+}
+
+.quantity-label input[type="number"] {
+  width: 80px;
+  padding: 6px 10px;
+  border: 1px solid #8FCFBC;
+  border-radius: 6px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.quantity-label input[type="number"]:focus {
+  border-color: #3AAFA9;
+  box-shadow: 0 0 5px rgba(58, 175, 169, 0.4);
+  outline: none;
+}
+
+.add-to-cart button {
+  padding: 8px 16px;
+  background-color: #3AAFA9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart button:hover {
+  background-color: #2E8B80;
+}
+
+.product-reviews {
+  background-color: #f8fdfa;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(58, 175, 169, 0.15);
+  margin-top: 24px;
+  border: 2px solid #8FCFBC;
+}
+
+.product-reviews h3 {
+  margin-bottom: 12px;
+  color: #3AAFA9;
+}
+
+.review-form h4 {
+  margin-bottom: 12px;
+  color: #2E8B80;
+}
+
+.variant-review-buttons {
+  margin-bottom: 12px;
+}
+
+.variant-review-buttons button {
+  padding: 6px 12px;
+  margin-right: 8px;
+  border: 1px solid #8FCFBC;
+  border-radius: 6px;
+  background-color: #EAFBF9;
+  cursor: pointer;
+}
+
+.variant-review-buttons button.selected {
+  background-color: #3AAFA9;
+  color: white;
+}
+
+.variant-review-buttons button:hover:not(.selected) {
+  background-color: #C7EDEB;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  margin-top: 12px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #8FCFBC;
+  resize: none;
+  margin-bottom: 8px;
+}
+
+.review-input-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-input-section select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #8FCFBC;
+  background-color: #f8fdfa;
+  color: #3AAFA9;
+  font-size: 1rem;
+}
+
+.review-input-section select:focus {
+  border-color: #3AAFA9;
+  box-shadow: 0 0 5px rgba(58, 175, 169, 0.4);
+  outline: none;
+}
+
+.review-input-section button {
+  padding: 8px 16px;
+  background-color: #3AAFA9;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.review-input-section button:hover {
+  background-color: #2E8B80;
+}
+
+.review-item {
+  border-bottom: 1px solid #8FCFBC;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+  
+.review-item p {
+  margin: 4px 0;
+}
+
+.review-sentiment {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 4px 10px;
+  background-color: #3AAFA9;
+  color: white;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  vertical-align: middle;
+}
+
+.review-text-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-text {
+  margin: 0;
+  flex: 1;
+  padding-right: 1rem;
+  word-break: break-word;
+}
+
+.review-date {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #888888;
+  white-space: nowrap;
+  margin: 0;
+}
