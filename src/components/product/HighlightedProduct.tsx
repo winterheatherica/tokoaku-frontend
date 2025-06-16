@@ -19,6 +19,8 @@ export default function HighlightedProduct({ data }: { data: any }) {
 
   const hrefLink = `/product/${product.slug}/variant/${randomVariant.slug}`
 
+  const hasDiscount = Array.isArray(discounts) && discounts.length > 0
+
   return (
     <div className="highlighted-container">
       <div className="highlighted-wrapper">
@@ -51,9 +53,17 @@ export default function HighlightedProduct({ data }: { data: any }) {
               </div>
               <div className="highlighted-details">
                 <h3>{product.name}</h3>
-                <p>Original Price: {formatPrice(prices.min_original)} - {formatPrice(prices.max_original)}</p>
-                <p>Discount Price: {formatPrice(prices.min_discount)} - {formatPrice(prices.max_discount)}</p>
-                {Array.isArray(discounts) && discounts.length > 0 ? (
+
+                {hasDiscount ? (
+                  <>
+                    <p>Original Price: {formatPrice(prices.min_original)} - {formatPrice(prices.max_original)}</p>
+                    <p>Discount Price: {formatPrice(prices.min_discount)} - {formatPrice(prices.max_discount)}</p>
+                  </>
+                ) : (
+                  <p>Price: {formatPrice(prices.min_original)} - {formatPrice(prices.max_original)}</p>
+                )}
+
+                {hasDiscount ? (
                   <div className="discounts-list">
                     <h4>Discount available:</h4>  
                     <ul>

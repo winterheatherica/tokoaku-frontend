@@ -143,7 +143,6 @@ export default function VisitorProductDetailPage() {
     await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/customer/review`, {
       product_variant_id: selectedVariantID,
       text: reviewText,
-      label: reviewSentiment,
       rating: reviewRating
     }, { headers: { Authorization: `Bearer ${token}` } })
     console.log(reviews)
