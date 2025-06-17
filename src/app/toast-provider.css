@@ -1,3 +1,4 @@
 .toaster-container {
-  margin-bottom: 82vh;
+  margin-bottom: 80vh;
+  z-index: 10000;
 }

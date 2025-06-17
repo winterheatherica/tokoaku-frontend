@@ -42,7 +42,6 @@ export default function Verify() {
         setMessage('Akun berhasil diverifikasi dan login!')
         setStatus('success')
 
-        // Tunggu 3 detik agar Erika terlihat dulu
         await new Promise((resolve) => setTimeout(resolve, 3000))
 
         router.push('/')
@@ -70,9 +69,9 @@ export default function Verify() {
         <div className="verify-success">
           <p className="verify-message">{message}</p>
           <img
-            src="/erika_spotlight.png"
-            alt="Erika Spotlight"
-            className="verify-erika"
+            src="/panda.jpg"
+            alt="Panda"
+            className="verify-panda"
           />
         </div>
       )}

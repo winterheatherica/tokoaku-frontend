@@ -66,6 +66,8 @@ export default function VisitorProductDetailPage() {
   const [reviewMessage, setReviewMessage] = useState('')
   const [eligibleVariants, setEligibleVariants] = useState<{ id: string, variant_name: string }[]>([])
   const [selectedVariantID, setSelectedVariantID] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
 
   const allVariants = useMemo(() => {
     return allVariantsRaw.slice().sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())
@@ -137,22 +139,39 @@ export default function VisitorProductDetailPage() {
   }
 
   const handleSubmitReview = async () => {
+    if (isSubmitting) return
+
+    if (reviewText.length < 50 || reviewText.length > 250) {
+      toast.error('Review harus antara 50 sampai 250 karakter.')
+      return
+    }
+
     const user = getAuth().currentUser
     if (!user) return router.push('/login')
-    const token = await user.getIdToken()
-    await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/customer/review`, {
-      product_variant_id: selectedVariantID,
-      text: reviewText,
-      rating: reviewRating
-    }, { headers: { Authorization: `Bearer ${token}` } })
-    console.log(reviews)
-    toast.success('Review berhasil dikirim!')
-    setReviewText('')
-    setReviewRating(5)
-    setSelectedVariantID(null)
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/visitor/reviews/${product_slug}`)
-    setReviews(res.data)
+
+    setIsSubmitting(true)
+    try {
+      const token = await user.getIdToken()
+      await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/customer/review`, {
+        product_variant_id: selectedVariantID,
+        text: reviewText,
+        rating: reviewRating
+      }, { headers: { Authorization: `Bearer ${token}` } })
+
+      toast.success('Review berhasil dikirim!')
+      setReviewText('')
+      setReviewRating(5)
+      setSelectedVariantID(null)
+
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/visitor/reviews/${product_slug}`)
+      setReviews(res.data)
+    } catch (error) {
+      toast.error('Gagal mengirim review.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
+
 
   if (loading) return <p>Loading...</p>
   if (!product || !variant) return <p>Produk atau varian tidak ditemukan.</p>
@@ -274,7 +293,9 @@ export default function VisitorProductDetailPage() {
                       ))}
                     </select>
                   </label>
-                  <button onClick={handleSubmitReview}>Kirim Review</button>
+                  <button onClick={handleSubmitReview} disabled={isSubmitting}>
+                    {isSubmitting ? 'Mengirim...' : 'Kirim Review'}
+                  </button>
                 </div>
               </>
             )}

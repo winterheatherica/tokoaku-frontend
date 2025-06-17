@@ -10,7 +10,7 @@
   background-color: #EAFBF9;
   border-bottom: 1.5px solid #8FCFBC;
   position: relative;
-  z-index: 10000;
+  z-index: 100;
   flex-wrap: nowrap;
   gap: 12px;
   user-select: none;

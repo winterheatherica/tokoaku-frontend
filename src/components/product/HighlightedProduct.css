@@ -91,13 +91,13 @@
   color: #22372B;
 }
 
-.highlighted-erika-wrapper {
+.highlighted-panda-wrapper {
   height: 260px;
   display: flex;
   align-items: center;
 }
 
-.highlighted-erika {
+.highlighted-panda {
   height: 250px;
   object-fit: contain;
 }
