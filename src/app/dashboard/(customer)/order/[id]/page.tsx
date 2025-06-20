@@ -146,7 +146,7 @@ export default function Page() {
       <h3>Log Status</h3>
       <ul className="order-logs-list">
         {order_logs.map((log, idx) => (
-          <li key={idx}>{log?.Status?.name ?? '-'} pada {log?.created_at}</li>
+          <li key={idx}>{log?.Status?.name ?? ''} Pada {log?.created_at}</li>
         ))}
       </ul>
 

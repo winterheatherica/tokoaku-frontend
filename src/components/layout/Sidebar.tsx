@@ -36,12 +36,16 @@ export default function Sidebar({ role }: SidebarProps) {
       'Order Promo',
       'Order Shipping Status',
       'Order Shipping',
+
+      'Sales',
     ],
     Seller: [
       'Home',
-      'Address',
+      // 'Address',
       'Bank Account',
-      'Notification'
+      // 'Notification',
+      'Products',
+      'Sales'
     ],
     Customer: [
       'Home',

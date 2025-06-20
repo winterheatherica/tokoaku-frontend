@@ -7,6 +7,8 @@ import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import Link from 'next/link'
 import './page.css'
+import ReviewSummarizationPanel from '@/components/product/ReviewSummarizationPanel'
+
 
 interface VariantImage {
   image_url: string
@@ -253,7 +255,7 @@ export default function VisitorProductDetailPage() {
           </div>
         </div>
       </div>
-
+      <ReviewSummarizationPanel productId={product.id} />
       <div className="product-reviews">
         <h3>Reviews</h3>
         {canReview && (
@@ -307,7 +309,19 @@ export default function VisitorProductDetailPage() {
               <div key={i} className="review-item">
                 <p>
                   <strong>{r.customer?.name ?? 'User'}</strong> • {r.rating}⭐{' '}
-                  {r.label && <span className="review-sentiment">{r.label}</span>}
+                  {r.label && (
+                    <span
+                      className={`review-sentiment ${
+                        r.label.toLowerCase() === 'positive'
+                          ? 'sentiment-positive'
+                          : r.label.toLowerCase() === 'negative'
+                          ? 'sentiment-negative'
+                          : ''
+                      }`}
+                    >
+                      {r.label}
+                    </span>
+                  )}
                 </p>
                 <p>{r.variant_name && `Variant: ${r.variant_name}`}</p>
                 <div className="review-text-row">

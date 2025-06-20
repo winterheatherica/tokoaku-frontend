@@ -1,0 +1,77 @@
+.bankAccountWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5fffd;
+  color: #2E8B80;
+}
+
+.bankAccountWrapper h2 {
+  color: #20736a;
+  margin-bottom: 20px;
+}
+
+.bankAccountWrapper label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.bankAccountWrapper input[type="text"],
+.bankAccountWrapper select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #8FCFBC;
+  margin-bottom: 12px;
+}
+
+.bankAccountWrapper input[type="checkbox"],
+.bankAccountWrapper input[type="radio"] {
+  transform: scale(1.2);
+  accent-color: #3AAFA9;
+  margin-right: 6px;
+}
+
+.bankAccountWrapper button {
+  padding: 10px 20px;
+  background-color: #3AAFA9;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 8px;
+}
+
+.bankAccountWrapper button:hover {
+  background-color: #2E8B80;
+}
+
+/* Tambahan untuk daftar akun bank */
+.bankAccountWrapper ul {
+  list-style: none;
+  padding: 0;
+}
+
+.bankAccountWrapper li {
+  border: 1px solid #8FCFBC;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 16px;
+  background-color: #ffffff;
+}
+
+.bankAccountWrapper li.active {
+  background-color: #e0f7f4;
+}
+
+.bankAccountWrapper .account-label {
+  margin-top: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  color: #2E8B80;
+}

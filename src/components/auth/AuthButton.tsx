@@ -22,7 +22,7 @@ export default function AuthButton() {
 
   return (
     <div className="auth-button-container">
-      <a href="dashboard/products" style={{ textDecoration: 'none', color: 'inherit' }}>
+      <a href="/dashboard/home" style={{ textDecoration: 'none', color: 'inherit' }}>
         <span className="auth-button-user" style={{ cursor: 'pointer' }}>
           Halo, {user?.email}
           {role && (

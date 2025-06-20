@@ -43,7 +43,7 @@ export default function Header({ banners }: { banners: any[] }) {
           {banners.map((banner) => (
             <div className="embla__slide" key={banner.id}>
               <a
-                href={`/discount/${banner.slug}`}
+                // href={`/discount/${banner.slug}`}
                 className="header-banner-link"
                 aria-label={banner.name}
               >

@@ -5,8 +5,6 @@ import axios from 'axios'
 import type { ProductCardProps } from '@/components/product/ProductCard'
 import Header from '@/components/layout/Header'
 import HighlightedProduct from '@/components/product/HighlightedProduct'
-import RandomProductForm from '@/components/product/RandomProductForm'
-import RandomProductType from '@/components/product/RandomProductType'
 import ProductFormList from '@/components/product/ProductFormList'
 import ProductTypeList from '@/components/product/ProductTypeList'
 import './page.css'
@@ -114,18 +112,6 @@ export default function Home() {
         }
     }
 
-    const handleFormChange = async (newFormId: string, newFormName: string) => {
-        setFormId(newFormId)
-        setCurrentFormName(newFormName)
-        await fetchProductsByForm(newFormId)
-    }
-
-    const handleTypeChange = async (newTypeId: string, newTypeName: string) => {
-        setTypeId(newTypeId)
-        setCurrentTypeName(newTypeName)
-        await fetchProductsByType(newTypeId)
-    }
-
     if (pageLoading) return <p>Loading halaman...</p>
 
     return (
@@ -140,27 +126,14 @@ export default function Home() {
                 </div>
             )}
 
-            <ProductFormList productForms={productForms} />
+            <div className="product-form-list-container">
+                <ProductFormList productForms={productForms} />
+            </div>
 
-            <RandomProductForm
-                productForms={productForms}
-                currentFormName={currentFormName}
-                formId={formId}
-                products={productsByForm}
-                productLoading={productFormLoading}
-                onFormChange={handleFormChange}
-            />
+            <div className="product-type-list-container">
+                <ProductTypeList productTypes={productTypes} />
+            </div>
 
-            <ProductTypeList productTypes={productTypes} />
-
-            <RandomProductType
-                productTypes={productTypes}
-                currentTypeName={currentTypeName}
-                typeId={typeId}
-                products={productsByType}
-                productLoading={productTypeLoading}
-                onTypeChange={handleTypeChange}
-            />
         </div>
     )
 }

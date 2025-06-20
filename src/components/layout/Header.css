@@ -54,7 +54,7 @@
   left: 0;
   width: 100%;
   padding: 16px 24px;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.4); 
   color: white;
   box-sizing: border-box;
   backdrop-filter: blur(7px);
@@ -63,6 +63,7 @@
   transition: transform 0.3s ease;
   z-index: 2;
 }
+
 
 .header-banner-link:hover .header-banner-overlay {
   transform: scale(0.99);

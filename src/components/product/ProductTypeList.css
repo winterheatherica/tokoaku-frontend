@@ -8,9 +8,10 @@
 
 .product-type-list {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: nowrap;
 }
 
 .product-type-list.top-row {

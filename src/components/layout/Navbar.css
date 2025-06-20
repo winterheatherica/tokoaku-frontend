@@ -53,11 +53,10 @@
   display: flex;
   gap: 8px;
   max-width: 400px;
-  width: 100%;
+  flex: 0 1 auto; /* shorthand untuk flex-grow: 0, flex-shrink: 1 */
 }
 
 .navbar-search input {
-  flex-grow: 1;
   min-width: 180px;
   max-width: 400px;
   padding: 8px;

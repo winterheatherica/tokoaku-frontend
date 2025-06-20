@@ -1,0 +1,108 @@
+.product-form-heading {
+  padding-top: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #3AAFA9;
+  text-align: center;
+}
+
+.product-form-list {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  margin-top: 1rem;
+}
+
+.product-grid-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 1200px) {
+  .product-grid-5 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .product-grid-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid-5 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.product-form-card-link {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  max-width: 220px;
+}
+
+.product-form-card {
+  background-color: #EAFBF9;
+  border-radius: 14px;
+  border: 2px solid #8FCFBC;
+  box-shadow: 0 6px 12px rgba(58, 175, 169, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+
+.product-form-card:hover {
+  transform: scale(0.98);
+  box-shadow: inset 0 2px 8px rgba(58, 175, 169, 0.25);
+  border-color: #3AAFA9;
+}
+
+.product-form-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background-color: #EAFBF9;
+}
+
+.product-form-content {
+  height: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.product-form-title {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-weight: 600;
+  color: #22372B;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.product-form-price {
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  color: #3AAFA9;
+  font-weight: 500;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}

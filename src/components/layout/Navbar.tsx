@@ -130,7 +130,7 @@ export default function Navbar({ referenceData }: { referenceData: any }) {
                   Form ▶
                   <div className="sub-dropdown">
                     {referenceData.product_forms?.map((f: any) => (
-                      <Link href={`/form/${f.slug}`} key={f.id}>
+                      <Link href={`/product-form/${f.slug}`} key={f.id}>
                         <span>{f.form}</span>
                       </Link>
                     ))}
@@ -140,7 +140,7 @@ export default function Navbar({ referenceData }: { referenceData: any }) {
                   Type ▶
                   <div className="sub-dropdown">
                     {referenceData.product_types?.map((t: any) => (
-                      <Link href={`/type/${t.slug}`} key={t.id}>
+                      <Link href={`/product-type/${t.slug}`} key={t.id}>
                         <span>{t.name}</span>
                       </Link>
                     ))}

@@ -296,13 +296,22 @@ textarea {
   display: inline-block;
   margin-left: 8px;
   padding: 4px 10px;
-  background-color: #3AAFA9;
   color: white;
   border-radius: 12px;
   font-weight: 600;
   font-size: 0.85rem;
   vertical-align: middle;
 }
+
+/* Warna sesuai label */
+.sentiment-positive {
+  background-color: #3AAFA9;
+}
+
+.sentiment-negative {
+  background-color: #EF5350;
+}
+
 
 .review-text-row {
   display: flex;

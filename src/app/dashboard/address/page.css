@@ -1,0 +1,85 @@
+.addressWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5fffd;
+  color: #2E8B80;
+}
+
+.addressWrapper h2 {
+  color: #20736a;
+  margin-bottom: 20px;
+}
+
+.addressWrapper label {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.addressWrapper input[type="text"],
+.addressWrapper textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #8FCFBC;
+  margin-bottom: 12px;
+}
+
+.addressWrapper input[type="checkbox"],
+.addressWrapper input[type="radio"] {
+  transform: scale(1.2);
+  accent-color: #3AAFA9;
+  margin-right: 6px;
+}
+
+.addressWrapper button {
+  padding: 10px 20px;
+  background-color: #3AAFA9;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 8px;
+}
+
+.addressWrapper button:hover {
+  background-color: #2E8B80;
+}
+
+.addressWrapper .mapContainer {
+  height: 300px;
+  width: 100%;
+  margin: 16px 0;
+  border: 2px solid #3AAFA9;
+  border-radius: 8px;
+}
+
+/* Tambahan untuk daftar alamat */
+.addressWrapper ul {
+  list-style: none;
+  padding: 0;
+}
+
+.addressWrapper li {
+  border: 1px solid #8FCFBC;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 16px;
+  background-color: #ffffff;
+}
+
+.addressWrapper li.active {
+  background-color: #e0f7f4;
+}
+
+.addressWrapper .address-label {
+  margin-top: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  color: #2E8B80;
+}

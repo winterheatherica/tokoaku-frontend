@@ -21,15 +21,9 @@ export default function ReviewSummarizationPanel({ productId }: { productId: str
   useEffect(() => {
     const fetchSummaries = async () => {
       try {
-        const user = getAuth().currentUser
-        if (!user) throw new Error('User not authenticated')
-        const token = await user.getIdToken(true)
-
-        const headers = { Authorization: `Bearer ${token}` }
-
         const [positiveRes, negativeRes] = await Promise.allSettled([
-          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/products/${productId}/summarize/positive`, { headers }),
-          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/seller/products/${productId}/summarize/negative`, { headers }),
+          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/visitor/products/${productId}/summarize/positive`),
+          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/visitor/products/${productId}/summarize/negative`),
         ])
 
         if (positiveRes.status === "fulfilled") {
@@ -76,7 +70,7 @@ export default function ReviewSummarizationPanel({ productId }: { productId: str
             <TypingText text={`"${positive.latest_summary}"`} />
           </>
         ) : (
-          <p className="summary-text">Belum ada ringkasan review positif.</p>
+          <p className="summary-text">Ringkasan positif belum tersedia karena belum mencapai 20 ulasan</p>
         )}
       </div>
 
@@ -90,7 +84,7 @@ export default function ReviewSummarizationPanel({ productId }: { productId: str
             </p>
           </>
         ) : (
-          <p className="summary-text">Belum ada ringkasan review negatif.</p>
+          <p className="summary-text">Ringkasan negatif belum tersedia karena belum mencapai 20 ulasan</p>
         )}
       </div>
     </div>
