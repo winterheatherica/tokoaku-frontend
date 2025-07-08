@@ -69,9 +69,9 @@ export default function Verify() {
         <div className="verify-success">
           <p className="verify-message">{message}</p>
           <img
-            src="/panda.jpg"
-            alt="Panda"
-            className="verify-panda"
+            src="/erika_spotlight.png"
+            alt="Erika"
+            className="verify-erika"
           />
         </div>
       )}

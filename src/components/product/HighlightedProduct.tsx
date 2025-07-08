@@ -85,8 +85,8 @@ export default function HighlightedProduct({ data }: { data: any }) {
           </div>
         </a>
 
-        <div className="highlighted-panda-wrapper">
-          <img src="/panda.jpg" alt="Panda" className="highlighted-panda" />
+        <div className="highlighted-erika-wrapper">
+          <img src="/erika_spotlight.png" alt="Panda" className="highlighted-erika" />
         </div>
       </div>
     </div>
