@@ -18,14 +18,9 @@ interface ProductTypeListProps {
 }
 
 const ProductTypeList: React.FC<ProductTypeListProps> = ({ productTypes }) => {
-    // Ambil 24 item secara acak
-    const shuffled = [...productTypes].sort(() => 0.5 - Math.random());
-    const selected = shuffled.slice(0, 24);
-
-    // Bagi menjadi grup isi 4 (4 per baris)
     const rows = [];
-    for (let i = 0; i < selected.length; i += 4) {
-        rows.push(selected.slice(i, i + 4));
+    for (let i = 0; i < productTypes.length; i += 4) {
+        rows.push(productTypes.slice(i, i + 4));
     }
 
     return (

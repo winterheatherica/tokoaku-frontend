@@ -1,6 +1,7 @@
 .product-page {
   display: flex;
   flex-direction: column;
+  width: 85%;
   gap: 32px;
   padding: 24px;
   background-color: white;

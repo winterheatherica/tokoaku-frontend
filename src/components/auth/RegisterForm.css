@@ -1,11 +1,12 @@
-form {
+.register-form {
   background-color: #EAFBF9;
   border: 2px solid #8FCFBC;
   border-radius: 16px;
   padding: 36px 32px;
+  min-width: 360px;
   max-width: 420px;
   width: 100%;
-  margin: 60px auto;
+  margin: 0 auto;
   box-shadow: 0 6px 14px rgba(58, 175, 169, 0.15);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #22372B;
@@ -15,7 +16,7 @@ form {
   box-sizing: border-box;
 }
 
-form h2 {
+.register-form-title {
   margin-top: 0;
   margin-bottom: 24px;
   font-size: 1.8rem;
@@ -25,23 +26,45 @@ form h2 {
   width: 100%;
 }
 
-form > div {
+.register-form-group {
   width: 100%;
   margin-bottom: 16px;
   box-sizing: border-box;
 }
 
-form p {
+.register-message {
   font-size: 0.95rem;
   margin-top: 12px;
   text-align: center;
+  color: #2E8B80;
   width: 100%;
 }
 
-form p:nth-of-type(1) {
+.register-error {
+  font-size: 0.95rem;
+  margin-top: 12px;
+  text-align: center;
+  color: #EF5350;
+  width: 100%;
+}
+
+.register-form-links {
+  text-align: center;
+  font-size: 0.95rem;
+  margin-top: 16px;
   color: #2E8B80;
 }
 
-form p:nth-of-type(2) {
-  color: #EF5350;
+.register-form-links p {
+  margin: 6px 0;
+}
+
+.register-link {
+  color: #3AAFA9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link:hover {
+  text-decoration: underline;
 }

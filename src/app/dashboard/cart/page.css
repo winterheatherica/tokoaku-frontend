@@ -35,6 +35,12 @@
   color: #3AAFA9;
 }
 
+.checkout-product-name {
+  font-weight: 600;
+  color: #3AAFA9;
+  margin: 8px 0;
+}
+
 .checkout-item {
   display: flex;
   align-items: flex-start;
@@ -54,9 +60,30 @@
   flex: 1;
 }
 
-.checkout-item-details p {
-  margin: 4px 0;
+.checkout-item-title {
+  font-weight: 600;
   color: #22372B;
+  text-decoration: none;
+}
+
+.checkout-item input[type="checkbox"] {
+  display: flex;
+  margin-top: 32px;
+}
+
+.checkout-item-details a {
+  color: #22372B; 
+  text-decoration: underline;
+}
+
+.checkout-item-details a:visited {
+  color: #22372B;
+  text-decoration: underline;
+}
+
+.checkout-added-at {
+  font-size: 0.85rem;
+  color: #888;
 }
 
 .quantity-control {
@@ -103,4 +130,24 @@
 
 .checkout-buttons button:hover {
   background-color: #2E8B80;
+}
+
+.checkout-empty-container {
+  background-color: #EAFBF9;
+  border: 2px solid #8FCFBC;
+  border-radius: 14px;
+  box-shadow: 0 6px 12px rgba(58, 175, 169, 0.15);
+  padding: 32px;
+  margin-top: 20px;
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkout-empty-message {
+  color: #3AAFA9;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
 }

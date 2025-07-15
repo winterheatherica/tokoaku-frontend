@@ -15,7 +15,6 @@ export default function RegisterForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('[Register] Submit triggered')
     setLoading(true)
     setError(null)
     setMessage('')
@@ -26,10 +25,8 @@ export default function RegisterForm() {
         password,
       })
 
-      console.log('[Register] Sukses:', res.data)
       setMessage('Registrasi berhasil, silakan cek email kamu!')
     } catch (err: any) {
-      console.log('[Register] Error:', err)
       setError(err.response?.data?.message || 'Gagal register')
     } finally {
       setLoading(false)
@@ -37,29 +34,45 @@ export default function RegisterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Daftar Akun</h2>
+    <form className="register-form" onSubmit={handleSubmit}>
+      <h2 className="register-form-title">Daftar Akun</h2>
 
-      <InputField
-        type="email"
-        label="Email"
-        placeholder="email@example.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <div className="register-form-group">
+        <InputField
+          type="email"
+          label="Email"
+          placeholder="email@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
 
-      <InputField
-        type="password"
-        label="Password"
-        placeholder="********"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <div className="register-form-group">
+        <InputField
+          type="password"
+          label="Password"
+          placeholder="********"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
 
-      <Button text="Daftar" loading={loading} type="submit" />
+      <div className="register-form-group">
+        <Button text={loading ? 'Mendaftarkan...' : 'Daftar'} loading={loading} type="submit" />
+      </div>
 
-      {message && <p>{message}</p>}
-      {error && <p>{error}</p>}
+      {message && <p className="register-message">{message}</p>}
+      {error && <p className="register-error">{error}</p>}
+
+      <div className="register-form-links">
+        <p>
+          Sudah punya akun?{' '}
+          <a href="/login" className="register-link">Login di sini</a>
+        </p>
+        <p>
+          <a href="/" className="register-link">← Kembali ke beranda</a>
+        </p>
+      </div>
     </form>
   )
 }

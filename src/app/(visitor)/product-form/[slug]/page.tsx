@@ -30,29 +30,29 @@ export default function ProductFormSlugPage() {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="product-form-heading">Product Form: {slug}</h1>
+            <h1 className="slug-product-heading">Product Form: {slug}</h1>
             {loading ? (
                 <p>Memuat produk...</p>
             ) : products.length === 0 ? (
                 <p>Tidak ada produk ditemukan.</p>
             ) : (
-                <div className="product-form-list product-grid-5">
+                <div className="slug-product-list slug-grid-5">
                 {products.map((product) => (
                     <a
                         key={product.id}
                         href={`/product/${product.slug}/variant/${product.variant_slug}`}
-                        className="product-form-card-link"
+                        className="slug-product-card-link"
                     >
-                        <div className="product-form-card">
+                        <div className="slug-product-card">
                             <img
                                 src={product.image_cover_url || '/default-product.jpg'}
                                 alt={product.name}
-                                className="product-form-image"
+                                className="slug-product-image"
                             />
-                            <div className="product-form-content">
+                            <div className="slug-product-content">
                                 <div>
-                                    <h2 className="product-form-title">{product.name}</h2>
-                                    <p className="product-form-price">
+                                    <h2 className="slug-product-title">{product.name}</h2>
+                                    <p className="slug-product-price">
                                         {product.min_price != null && product.max_price != null
                                             ? `Rp${product.min_price.toLocaleString()} – Rp${product.max_price.toLocaleString()}`
                                             : 'Harga tidak tersedia'}

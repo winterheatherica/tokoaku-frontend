@@ -1,0 +1,14 @@
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-color: #f7fdfd;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.register-form-wrapper {
+  display: flex;
+  justify-content: center;
+}

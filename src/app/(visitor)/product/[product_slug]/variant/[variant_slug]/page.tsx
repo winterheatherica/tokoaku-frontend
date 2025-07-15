@@ -127,17 +127,42 @@ export default function VisitorProductDetailPage() {
   }, [product_slug])
 
   const handleAddToCart = async () => {
+    if (!variant) return
+
+    if (variant.stock === 0) {
+      toast.error('Produk ini sedang kehabisan stok.')
+      return
+    }
+
+    if (quantity > variant.stock) {
+      toast.error(`Maksimal pembelian hanya ${variant.stock} item.`)
+      return
+    }
+
     const user = getAuth().currentUser
     if (!user) return router.push('/login')
-    const token = await user.getIdToken()
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/customer/cart`, {
-      product_variant_id: variant?.id,
-      quantity
-    }, { headers: { Authorization: `Bearer ${token}` } }).then(() => {
+
+    try {
+      const token = await user.getIdToken()
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/customer/cart`,
+        {
+          product_variant_id: variant.id,
+          quantity,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+
       toast.success('Produk ditambahkan ke keranjang!')
-    }).catch(() => {
-      toast.error('Gagal menambahkan ke keranjang')
-    })
+    } catch (err: any) {
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        toast.error(err.response.data.message)
+      } else {
+        toast.error('Gagal menambahkan ke keranjang')
+      }
+    }
   }
 
   const handleSubmitReview = async () => {

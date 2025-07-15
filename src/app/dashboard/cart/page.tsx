@@ -32,7 +32,7 @@ interface GroupedCart {
 }
 
 export default function CustomerCartPage() {
-  const [groupedCart, setGroupedCart] = useState<GroupedCart[]>([])
+  const [groupedCart, setGroupedCart] = useState<GroupedCart[] | null>(null)
   const [loading, setLoading] = useState(true)
   const router = useRouter()
 
@@ -67,17 +67,18 @@ export default function CustomerCartPage() {
       }, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      toast.success('Berhasil mengubah status item')
-      // update local state tanpa fetch ulang
-      setGroupedCart(prev => prev.map(seller => ({
-        ...seller,
-        products: seller.products.map(product => ({
-          ...product,
-          cart_items: product.cart_items.map(item =>
-            item.product_variant_id === variantID ? { ...item, is_selected: checked } : item
-          )
-        }))
-      })))
+      toast.success('Status item diperbarui')
+      setGroupedCart(prev =>
+        prev?.map(seller => ({
+          ...seller,
+          products: seller.products.map(product => ({
+            ...product,
+            cart_items: product.cart_items.map(item =>
+              item.product_variant_id === variantID ? { ...item, is_selected: checked } : item
+            )
+          }))
+        })) ?? null
+      )
     } catch {
       toast.error('Gagal mengubah status item')
     }
@@ -93,114 +94,103 @@ export default function CustomerCartPage() {
       }, {
         headers: { Authorization: `Bearer ${token}` }
       })
-      toast.success('Jumlah berhasil diperbarui')
-      // update local state tanpa fetch ulang
-      setGroupedCart(prev => prev.map(seller => ({
-        ...seller,
-        products: seller.products.map(product => ({
-          ...product,
-          cart_items: product.cart_items.map(item =>
-            item.product_variant_id === variantID ? { ...item, quantity: newQty } : item
-          )
-        }))
-      })))
+      toast.success('Jumlah diperbarui')
+      setGroupedCart(prev =>
+        prev?.map(seller => ({
+          ...seller,
+          products: seller.products.map(product => ({
+            ...product,
+            cart_items: product.cart_items.map(item =>
+              item.product_variant_id === variantID ? { ...item, quantity: newQty } : item
+            )
+          }))
+        })) ?? null
+      )
     } catch {
-      toast.error('Gagal mengubah jumlah')
+      toast.error('Gagal memperbarui jumlah')
     }
   }
 
-  const selectedItems = groupedCart
+  const selectedItems = (groupedCart ?? [])
     .flatMap(group => group.products.flatMap(p => p.cart_items))
     .filter(item => item.is_selected)
 
   if (loading) return <p>Loading keranjang...</p>
+  if (!groupedCart || groupedCart.length === 0) {
+    return (
+      <div className="checkout-empty-container">
+        <p className="checkout-empty-message">Keranjang kosong.</p>
+      </div>
+    )
+  }
 
   return (
-  <div className="checkout-container">
-    <h2 className="checkout-header">Keranjang Saya</h2>
+    <div className="checkout-container">
+      <h2 className="checkout-header">Keranjang Saya</h2>
 
-    {groupedCart.length === 0 ? (
-      <p style={{ textAlign: 'center', color: '#888' }}>Keranjang kosong.</p>
-    ) : (
-      groupedCart.map((group, idx) => (
-        <div key={group.seller_name + idx} className="checkout-seller">
-          <h3>Penjual: {group.seller_name}</h3>
+      {!groupedCart || groupedCart.length === 0 ? (
+        <p className="checkout-empty-message">Keranjang kosong.</p>
+      ) : (
+        groupedCart.map((group, idx) => (
+          <div key={group.seller_name + idx} className="checkout-seller">
+            <h3 className="checkout-seller-name">Penjual: {group.seller_name}</h3>
 
-          {group.products.map((product) => (
-            <div key={product.product_name}>
-              <p style={{ fontWeight: '600', color: '#3AAFA9', margin: '8px 0' }}>{product.product_name}</p>
+            {group.products.map((product, pIdx) => (
+              <div key={pIdx}>
+                <p className="checkout-product-name">{product.product_name}</p>
 
-              {product.cart_items.map((item) => (
-                <div key={item.product_variant_id} className="checkout-item">
-                  <input
-                    type="checkbox"
-                    checked={item.is_selected}
-                    onChange={(e) =>
-                      handleSelectChange(item.product_variant_id, e.target.checked)
-                    }
-                    style={{ marginTop: '30px' }}
-                  />
-                  <img
-                    src={item.image_url || '/default-product.jpg'}
-                    alt={item.product_variant_name}
-                  />
-                  <div className="checkout-item-details">
-                    <Link href={`/product/${item.product_slug}/variant/${item.product_variant_slug}`}>
-                      <p style={{ fontWeight: '600', color: '#22372B' }}>
-                        {item.product_name} - {item.product_variant_name}
+                {product.cart_items.map((item, iIdx) => (
+                  <div key={item.product_variant_id + iIdx} className="checkout-item">
+                    <input
+                      type="checkbox"
+                      checked={item.is_selected}
+                      onChange={(e) =>
+                        handleSelectChange(item.product_variant_id, e.target.checked)
+                      }
+                      className="checkout-checkbox"
+                    />
+                    <img
+                      src={item.image_url || '/default-product.jpg'}
+                      alt={item.product_variant_name}
+                      className="checkout-item-image"
+                    />
+                    <div className="checkout-item-details">
+                      <Link
+                        href={`/product/${item.product_slug}/variant/${item.product_variant_slug}`}
+                        className="checkout-product-link"
+                      >
+                        <p className="checkout-product-title">
+                          {item.product_name} - {item.product_variant_name}
+                        </p>
+                      </Link>
+                      <div className="quantity-control">
+                        <button onClick={() => handleQuantityChange(item.product_variant_id, item.quantity - 1)}>
+                          -
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button onClick={() => handleQuantityChange(item.product_variant_id, item.quantity + 1)}>
+                          +
+                        </button>
+                      </div>
+                      <p className="checkout-added-at">
+                        Ditambahkan: {new Date(item.added_at).toLocaleString('id-ID')}
                       </p>
-                    </Link>
-                    <div className="quantity-control" style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                      <button
-                        onClick={() =>
-                          handleQuantityChange(item.product_variant_id, item.quantity - 1)
-                        }
-                        style={{
-                          backgroundColor: 'white',
-                          border: '1px solid #8FCFBC',
-                          borderRadius: '6px',
-                          padding: '4px 10px',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        -
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button
-                        onClick={() =>
-                          handleQuantityChange(item.product_variant_id, item.quantity + 1)
-                        }
-                        style={{
-                          backgroundColor: 'white',
-                          border: '1px solid #8FCFBC',
-                          borderRadius: '6px',
-                          padding: '4px 8px',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        +
-                      </button>
                     </div>
-                    <p style={{ fontSize: '0.85rem', color: '#888' }}>
-                      Ditambahkan: {new Date(item.added_at).toLocaleString('id-ID')}
-                    </p>
                   </div>
-                </div>
-              ))}
-            </div>
-          ))}
+                ))}
+              </div>
+            ))}
+          </div>
+        ))
+      )}
+
+      {selectedItems.length > 0 && (
+        <div className="checkout-buttons">
+          <button onClick={() => router.push('/dashboard/checkout')}>
+            Checkout ({selectedItems.length} item)
+          </button>
         </div>
-      ))
-    )}
-
-    {selectedItems.length > 0 && (
-      <div className="checkout-buttons">
-        <button onClick={() => router.push('/dashboard/checkout')}>
-          Checkout ({selectedItems.length} item)
-        </button>
-      </div>
-    )}
-  </div>
-)
-
+      )}
+    </div>
+  )
 }

@@ -42,32 +42,48 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleLogin} className="max-w-sm mx-auto space-y-4">
-      <h2 className="text-2xl font-semibold text-center">Login</h2>
+    <form className="login-form" onSubmit={handleLogin}>
+      <h2 className="login-form-title">Login</h2>
 
-      <InputField
-        type="email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        placeholder="email@example.com"
-        label="Email"
-      />
+      <div className="login-form-group">
+        <InputField
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          placeholder="email@example.com"
+          label="Email"
+        />
+      </div>
 
-      <InputField
-        type="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        placeholder="********"
-        label="Password"
-      />
+      <div className="login-form-group">
+        <InputField
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          placeholder="********"
+          label="Password"
+        />
+      </div>
 
-      {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+      {error && <p className="login-form-error">{error}</p>}
 
-      <Button
-        type="submit"
-        text={loading ? 'Logging in...' : 'Login'}
-        loading={loading}
-      />
+      <div className="login-form-group">
+        <Button
+          type="submit"
+          text={loading ? 'Logging in...' : 'Login'}
+          loading={loading}
+        />
+      </div>
+
+      <div className="login-form-links">
+        <p>
+          Belum punya akun?{' '}
+          <a href="/register" className="login-link">Daftar di sini</a>
+        </p>
+        <p>
+          <a href="/" className="login-link">← Kembali ke beranda</a>
+        </p>
+      </div>
     </form>
   )
 }

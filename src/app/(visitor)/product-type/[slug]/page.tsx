@@ -30,38 +30,38 @@ export default function ProductTypeSlugPage() {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="product-type-heading">Product Type: {slug}</h1>
+            <h1 className="ptype-heading">Product Type: {slug}</h1>
             {loading ? (
                 <p>Memuat produk...</p>
             ) : products.length === 0 ? (
                 <p>Tidak ada produk ditemukan.</p>
             ) : (
-                <div className="product-type-list product-grid-5">
-                {products.map((product) => (
-                    <a
-                        key={product.id}
-                        href={`/product/${product.slug}/variant/${product.variant_slug}`}
-                        className="product-type-card-link"
-                    >
-                        <div className="product-type-card">
-                            <img
-                                src={product.image_cover_url || '/default-product.jpg'}
-                                alt={product.name}
-                                className="product-type-image"
-                            />
-                            <div className="product-type-content">
-                                <div>
-                                    <h2 className="product-type-title">{product.name}</h2>
-                                    <p className="product-type-price">
-                                        {product.min_price != null && product.max_price != null
-                                            ? `Rp${product.min_price.toLocaleString()} – Rp${product.max_price.toLocaleString()}`
-                                            : 'Harga tidak tersedia'}
-                                    </p>
+                <div className="ptype-list ptype-grid-5">
+                    {products.map((product) => (
+                        <a
+                            key={product.id}
+                            href={`/product/${product.slug}/variant/${product.variant_slug}`}
+                            className="ptype-card-link"
+                        >
+                            <div className="ptype-card">
+                                <img
+                                    src={product.image_cover_url || '/default-product.jpg'}
+                                    alt={product.name}
+                                    className="ptype-image"
+                                />
+                                <div className="ptype-content">
+                                    <div>
+                                        <h2 className="ptype-title">{product.name}</h2>
+                                        <p className="ptype-price">
+                                            {product.min_price != null && product.max_price != null
+                                                ? `Rp${product.min_price.toLocaleString()} – Rp${product.max_price.toLocaleString()}`
+                                                : 'Harga tidak tersedia'}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                ))}
+                        </a>
+                    ))}
                 </div>
             )}
         </div>
