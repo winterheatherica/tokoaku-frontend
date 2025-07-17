@@ -1,4 +1,5 @@
 import React from 'react'
+import './AddVariantForm.css'
 
 interface Props {
   variantName: string
@@ -10,32 +11,41 @@ interface Props {
 }
 
 export default function AddVariantForm({
-  variantName, stock, onChangeName, onChangeStock, onAddVariant, productName
+  variantName,
+  stock,
+  onChangeName,
+  onChangeStock,
+  onAddVariant,
+  productName
 }: Props) {
   return (
-    <div>
-      <h2>Add Product Variant</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '300px' }}>
+    <>
+      <h2 className="add-variant-title">Tambah Variant Produk</h2>
+      <div className="add-variant-form">
         <label>
-          Variant Name:
+          <span className="form-label">Nama Variant</span>
           <input
             type="text"
             placeholder={`Contoh: ${productName} - A1`}
             value={variantName}
             onChange={(e) => onChangeName(e.target.value)}
+            className="form-input"
           />
         </label>
         <label>
-          Stock:
+          <span className="form-label">Stok</span>
           <input
             type="number"
             placeholder="Contoh: 1000"
             value={stock}
             onChange={(e) => onChangeStock(String(e.target.value))}
+            className="form-input"
           />
         </label>
-        <button onClick={onAddVariant}>Add Variant</button>
+        <button type="button" className="add-product-btn" onClick={onAddVariant}>
+          Tambah Varian
+        </button>
       </div>
-    </div>
+    </>
   )
 }
