@@ -209,18 +209,23 @@ export default function SalesAdminPage() {
     switch (range) {
       case "7d":
         cutoff.setDate(cutoff.getDate() - 7)
+        cutoff.setDate(cutoff.getDate() - 16) // sebenernya kemaren itu udh bener tanpa -16 ini, tapi gak tau kenapa sekarang kek gini lagi, pusing gw
         break
       case "30d":
         cutoff.setDate(cutoff.getDate() - 30)
+        cutoff.setDate(cutoff.getDate() - 16)
         break
       case "3m":
         cutoff.setMonth(cutoff.getMonth() - 3)
+        cutoff.setDate(cutoff.getDate() - 16)
         break
       case "6m":
         cutoff.setMonth(cutoff.getMonth() - 6)
+        cutoff.setDate(cutoff.getDate() - 16)
         break
       case "1y":
         cutoff.setFullYear(cutoff.getFullYear() - 1)
+        cutoff.setDate(cutoff.getDate() - 16)
         break
     }
 
