@@ -27,3 +27,50 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.backend-down-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 20px;
+}
+
+.backend-down-box {
+  background-color: #EAFBF9;
+  border: 2px solid #8FCFBC;
+  border-radius: 14px;
+  box-shadow: 0 6px 12px rgba(58, 175, 169, 0.15);
+  padding: 32px;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  cursor: default;
+}
+
+.backend-down-message {
+  color: #3AAFA9;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.demo-button {
+  display: inline-block;
+  margin-top: 16px;
+  background-color: #3AAFA9;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.demo-button:hover {
+  background-color: #2E8B80;
+}

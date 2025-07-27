@@ -41,29 +41,52 @@ export default function Home() {
         fetchData()
     }, [])
 
-
     if (pageLoading) return <p>Loading halaman...</p>
+
+    const isBackendDown =
+        (!banners || banners.length === 0) &&
+        !highlightedProduct &&
+        (!productForms || productForms.length === 0) &&
+        (!productTypes || productTypes.length === 0)
 
     return (
         <div className="page-container">
-            <div className="header-section">
-                <Header banners={banners} />
-            </div>
-
-            {highlightedProduct && (
-                <div className="highlighted-product-section">
-                    <HighlightedProduct data={highlightedProduct} />
+            {isBackendDown ? (
+                <div className="backend-down-wrapper">
+                    <div className="backend-down-box">
+                    <p className="backend-down-message">Server Backend-nya mati 😢,</p>
+                    <p className="backend-down-message">untuk demo websitenya bisa cek link berikut:</p>
+                    <a
+                        href="https://youtu.be/-Ot6dHHO-eg?si=w61QqmzOiS_8CS6o"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="demo-button"
+                    >
+                        Lihat Demo Website
+                    </a>
+                    </div>
                 </div>
+            ) : (
+                <>
+                    <div className="header-section">
+                        <Header banners={banners} />
+                    </div>
+
+                    {highlightedProduct && (
+                        <div className="highlighted-product-section">
+                            <HighlightedProduct data={highlightedProduct} />
+                        </div>
+                    )}
+
+                    <div className="product-form-list-container">
+                        <ProductFormList productForms={productForms} />
+                    </div>
+
+                    <div className="product-type-list-container">
+                        <ProductTypeList productTypes={productTypes} />
+                    </div>
+                </>
             )}
-
-            <div className="product-form-list-container">
-                <ProductFormList productForms={productForms} />
-            </div>
-
-            <div className="product-type-list-container">
-                <ProductTypeList productTypes={productTypes} />
-            </div>
-
         </div>
     )
 }
